@@ -1,5 +1,7 @@
 import localFont from "next/font/local";
 import "./globals.css";
+import { ContextAuthProvider } from "@/app/context/AuthContext"
+import { Fragment } from "react";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -23,7 +25,11 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <Fragment>
+          <ContextAuthProvider>
+            {children}
+          </ContextAuthProvider>
+        </Fragment>
       </body>
     </html>
   );
