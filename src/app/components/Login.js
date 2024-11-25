@@ -91,6 +91,25 @@ export const Login = ({ setRegistro }) => {
                 ) : null}
               </div>
               <div>
+              <div>
+                  <button
+                    type="submit"
+                    className={`mb-4 py-2 px-5 me-2 text-m w-full text-white font-bold focus:outline-none focus:shadow-md hover:shadow-md bg-red-500 rounded-full hover:bg-red-600 flex items-center justify-center`}
+                    disabled={isLoading} // Desactiva el botón durante la carga
+                  >
+                    {isLoading ? (
+                      <lord-icon
+                        src="https://cdn.lordicon.com/gkryirhd.json"
+                        trigger="loop"
+                        state="loop-snake-alt"
+                        colors="primary:#ffffff"
+                        style={{ width: "1.5rem", height: "1.5rem" }}
+                      ></lord-icon>
+                    ) : (
+                      "¡Ingresar a tarjeto!"
+                    )}
+                  </button>
+                </div>
                 <button
                   type="button"
                   className="mb-4 w-full text-white bg-[#434343] hover:bg-[#434343]/90 focus:outline-none hover:shadow-md font-medium rounded-full text-sm pl-16 py-2.5 text-center inline-flex items-center me-2"
