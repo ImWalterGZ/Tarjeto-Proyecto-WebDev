@@ -121,6 +121,7 @@ export const Login = ({ setRegistro }) => {
                   </a>
                   !
                 </div>
+              </div>
               </Form>
             </div>
           )}
