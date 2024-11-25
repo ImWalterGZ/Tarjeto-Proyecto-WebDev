@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-export default function WelcomeUser() {
+export default function WelcomeUser( { nombreUser } ) {
   return (
     <div className="flex flex-row items-center justify-center gap-6 w-full h-auto">
       <div className="relative h-24">
@@ -14,7 +14,7 @@ export default function WelcomeUser() {
       </div>
       <div className="h-full">
         <p className="text-primary">¡Buenas buenas,</p>
-        <p className="text-stone-700 font-bold text-4xl">Walter GZZZ!</p>
+        <p className="text-stone-700 font-bold text-4xl">{nombreUser}</p>
       </div>
     </div>
   );
