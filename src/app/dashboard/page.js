@@ -11,7 +11,7 @@ export default function Dashboard() {
       <div className="my-16">
         <WelcomeUser />
       </div>
-      <div>
+      <div id="CardContDisplay" className="flex justify-center items-center">
         <CardContainer />
       </div>
     </div>

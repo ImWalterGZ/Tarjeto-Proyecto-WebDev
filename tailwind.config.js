@@ -18,6 +18,18 @@ module.exports = {
           light: "#F75A5A",
           dark: "#B31C1C",
         },
+        oro: {
+          DEFAULT: "#FFFF4A",
+          shadow: "#B7900F",
+        },
+        plata: {
+          DEFAULT: "#90C1DB",
+          shadow: "#4D6775",
+        },
+        rubi: {
+          DEFAULT: "#F42630",
+          shadow: "#8E161C",
+        },
       },
     },
   },
