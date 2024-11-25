@@ -8,6 +8,7 @@ import { auth } from "@/app/firebase";
 import { useRouter } from "next/navigation";
 import Image from 'next/image';
 import Script from "next/script";
+import swal from 'sweetalert';
 
 // Configura la fuente
 const dancingScript = Dancing_Script({
@@ -48,7 +49,7 @@ export const Login = ({ setRegistro }) => {
             router.push("/dashboard");
           } catch (error) {
             await new Promise((r) => setTimeout(r, 3000)); // Simula una carga de 1 segundo
-            alert("Contraseña incorrecta");
+              swal("Tu contraseña o correo no coinciden", "Por favor, verifica tus datos e inténtalo de nuevo.", "error");
           } finally {
             setIsLoading(false); // Desactiva la animación de carga
           }
