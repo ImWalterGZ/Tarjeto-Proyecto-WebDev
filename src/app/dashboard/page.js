@@ -15,7 +15,11 @@ export default function Dashboard() {
         <WelcomeUser nombreUser={currentUser ? currentUser.nombre : 'Cargando...'}/>
       </div>
       <div id="CardContDisplay" className="flex justify-center items-center">
-        <CardContainer />
+      {currentUser ? (
+          <CardContainer userId={currentUser} />
+        ) : (
+          <p>Cargando...</p>
+        )}
       </div>
     </div>
   );

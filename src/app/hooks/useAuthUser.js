@@ -25,9 +25,10 @@ export const useAuthUser = () => {
           setisLogged(true);
           const userDoc = await getDoc(doc(db, "users", user.uid));
           const userData = userDoc.data();
-          console.log(userData.nombre);
+          console.log(userDoc.tarjetas)
           setCurrentUser({ 
             nombre: userData.nombre,
+            id: user.uid
           });
           if (pathname === "/") {
             push("/dashboard");

@@ -1,6 +1,7 @@
 import AnadirLugar from "./AnadirLugar";
 import Card from "./Card";
-export default function CardContainer() {
+export default function CardContainer({ userId }) {
+  
   return (
     <div className="flex flex-col items-center justify-center bg-stone-100 w-8/12 rounded-xl">
       <div
@@ -36,7 +37,7 @@ export default function CardContainer() {
           nivel={2}
         />
       </div>
-      <AnadirLugar />
+      <AnadirLugar userId={userId}/>
     </div>
   );
 }
