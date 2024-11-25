@@ -20,7 +20,7 @@ export const useAuthUser = () => {
           } else {
             setisLogged(true);
             if (pathname === "/") {
-              push("/Index");
+              push("/dashboard");
             }
           }
         });
