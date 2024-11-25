@@ -45,7 +45,7 @@ export const Login = ({ setRegistro }) => {
           setIsLoading(true); // Activa la animación de carga
           try {
             await signInWithEmailAndPassword(auth, values.email, values.password);
-            router.push("/Index");
+            router.push("/dashboard");
           } catch (error) {
             await new Promise((r) => setTimeout(r, 3000)); // Simula una carga de 1 segundo
             alert("Contraseña incorrecta");
