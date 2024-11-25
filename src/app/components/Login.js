@@ -19,8 +19,8 @@ const SignupSchema = Yup.object().shape({
   password: Yup.string()
     .min(2, '¡Muy corto!')
     .max(50, '¡Muy largo!')
-    .required('Requerido*'),
-  email: Yup.string().email('Email no válido.').required('Requerido*'),
+    .required('Necesitas rellenar este campo.'),
+  email: Yup.string().email('Ese correo no pinta bien, revisa que esté completo.').required('Necesitas rellenar este campo.'),
 });
 
 export const Login = ({ setRegistro }) => {
@@ -65,7 +65,7 @@ export const Login = ({ setRegistro }) => {
               <Field
                 name="email"
                 type="email"
-                className={`bg-[#000000] bg-opacity-5 border-[.1rem] w-[20rem] h-14 p-5 text-[#434343] focus:outline-none rounded-xl ${errors.email && touched.email ? 'border-red-600' : 'border-[#000000] border-opacity-50'}`}
+                className={`bg-[#000000] bg-opacity-5 border-[.1rem] w-[20rem] h-14 p-5 text-[#434343] focus:outline-none focus:shadow-md rounded-xl ${errors.email && touched.email ? 'border-red-600' : 'border-[#000000] border-opacity-50'}`}
                 placeholder="Ingresa tu correo electrónico"
               />
               <div className='mb-3 mt-1'>
@@ -76,7 +76,7 @@ export const Login = ({ setRegistro }) => {
               <Field
                 name="password"
                 type="password"
-                className={`bg-[#000000] bg-opacity-5 border-[.1rem] w-[20rem] h-14 p-5 text-[#434343] focus:outline-none rounded-xl ${errors.password && touched.password ? 'border-red-600' : 'border-[#000000] border-opacity-50'}`}
+                className={`bg-[#000000] bg-opacity-5 border-[.1rem] w-[20rem] h-14 p-5 text-[#434343] focus:outline-none focus:shadow-md rounded-xl ${errors.password && touched.password ? 'border-red-600' : 'border-[#000000] border-opacity-50'}`}
                 placeholder="Ingresa tu contraseña"
               />
               <div className='mb-3 mt-1'>
@@ -87,7 +87,7 @@ export const Login = ({ setRegistro }) => {
               <div>
                 <button
                   type="submit"
-                  className={`mb-4 py-2 px-5 me-2 text-m w-full text-white font-bold focus:outline-none bg-red-500 rounded-full hover:bg-red-600 flex items-center justify-center`}
+                  className={`mb-4 py-2 px-5 me-2 text-m w-full text-white font-bold focus:outline-none focus:shadow-md hover:shadow-md bg-red-500 rounded-full hover:bg-red-600 flex items-center justify-center`}
                   disabled={isLoading} // Desactiva el botón durante la carga
                 >
                   {isLoading ? (
@@ -105,8 +105,7 @@ export const Login = ({ setRegistro }) => {
               </div>
               <button
                 type="button"
-                className="mb-4 w-full text-white bg-[#434343] hover:bg-[#434343]/90 focus:outline-none font-medium rounded-full text-sm pl-16 py-2.5 text-center inline-flex items-center me-2"
-              >
+                className="mb-4 w-full text-white bg-[#434343] hover:bg-[#434343]/90 focus:outline-none hover:shadow-md font-medium rounded-full text-sm pl-16 py-2.5 text-center inline-flex items-center me-2">
                 <svg
                   className="w-4 h-4 me-2"
                   aria-hidden="true"
