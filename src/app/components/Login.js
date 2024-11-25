@@ -8,7 +8,7 @@ import { auth } from "@/app/firebase";
 import { useRouter } from "next/navigation";
 import Image from 'next/image';
 import Script from "next/script";
-import swal from 'sweetalert';
+import Swal from 'sweetalert2'
 
 // Configura la fuente
 const dancingScript = Dancing_Script({
@@ -49,7 +49,11 @@ export const Login = ({ setRegistro }) => {
             router.push("/dashboard");
           } catch (error) {
             await new Promise((r) => setTimeout(r, 3000)); // Simula una carga de 1 segundo
-              swal("Tu contraseña o correo no coinciden", "Por favor, verifica tus datos e inténtalo de nuevo.", "error");
+            Swal.fire({
+              icon: "error",
+              title: "Ups, tu contraseña o correo no coinciden",
+              text: "Por favor, verifica tus datos e inténtalo de nuevo.",
+            });
           } finally {
             setIsLoading(false); // Desactiva la animación de carga
           }
