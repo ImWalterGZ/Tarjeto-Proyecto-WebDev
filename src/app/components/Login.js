@@ -7,8 +7,6 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import Script from "next/script";
-
-import { doc, setDoc } from "firebase/firestore";
 import { db, auth } from "@/app/firebase"; // Ajusta la ruta según sea necesario
 import swal from 'sweetalert';
 

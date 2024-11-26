@@ -56,7 +56,7 @@ export default function Registro({ setRegistro }){
           const result = await signInWithPopup(auth, provider);
           // El usuario ha iniciado sesión exitosamente
           console.log("Usuario registrado con Google:", result.user);
-          router.push("/Index"); // Redirige al usuario después del login exitoso
+          router.push("/dashboard"); // Redirige al usuario después del login exitoso
         } catch (error) {
           console.error("Error al registrar con Google:", error);
           // Aquí puedes manejar los errores específicos si lo deseas
