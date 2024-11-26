@@ -59,9 +59,9 @@ export default function AnadirLugar({userId, reload}) {
 
 
   const contieneTarjeta = async (nombre) =>{
- 
+    
     try {
-      console.log("contieneTarjeta");
+      //console.log("contieneTarjeta");
       const negociosRef = collection(db, 'users',userId,'tarjetas');
       const q = query(negociosRef, where('nombreNegocio', '==', nombre));
       const snapshot = await getDocs(q);

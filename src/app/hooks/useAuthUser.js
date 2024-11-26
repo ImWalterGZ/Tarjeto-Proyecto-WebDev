@@ -46,5 +46,5 @@ export const useAuthUser = () => {
     });
   }, [reloadTrigger]);
 
-  return { currentUser, tarjetas, reload };
+  return { currentUser, tarjetas, reload, reloadTrigger };
 };
