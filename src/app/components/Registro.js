@@ -10,6 +10,7 @@ import Image from 'next/image'
 import { doc, setDoc } from 'firebase/firestore';
 import { db } from "@/app/firebase"
 import Swal from 'sweetalert2'
+
 // Configura la fuente
 const dancingScript = Dancing_Script({
   subsets: ['latin'],

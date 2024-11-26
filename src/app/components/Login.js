@@ -51,7 +51,6 @@ export const Login = ({ setRegistro }) => {
             await signInWithEmailAndPassword(auth, values.email, values.password);
             router.push("/dashboard");
           } catch (error) {
-            await new Promise((r) => setTimeout(r, 3000)); // Simula una carga de 1 segundo
             Swal.fire({
               title: "Ups, tu contraseña o correo no coinciden",
               text: "Por favor, verifica tus datos e inténtalo de nuevo.",
