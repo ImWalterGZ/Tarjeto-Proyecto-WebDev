@@ -8,9 +8,11 @@ import { useRouter } from "next/navigation";
 import Image from "next/image";
 import Script from "next/script";
 import Swal from 'sweetalert2'
+import { Nunito } from "next/font/google";
+import styles from "./css/sweet-alert.css"
 
 // Configura la fuente
-const dancingScript = Dancing_Script({
+const nunito = Nunito({
   subsets: ["latin"],
   display: "swap",
 });
@@ -21,7 +23,7 @@ const SignupSchema = Yup.object().shape({
     .min(2, '¡Muy corto!')
     .max(50, '¡Muy largo!')
     .required('Necesitas escribir tu contraseña.'),
-  email: Yup.string().email('Ese correo no pinta bien, revisa que esté completo.').required('Necesitas escribir tu correo.'),
+  email: Yup.string().email('Ese correo no se ve bien, revisa que esté completo.').required('Necesitas escribir tu correo.'),
 });
 
 export const Login = ({ setRegistro }) => {
@@ -51,9 +53,14 @@ export const Login = ({ setRegistro }) => {
           } catch (error) {
             await new Promise((r) => setTimeout(r, 3000)); // Simula una carga de 1 segundo
             Swal.fire({
-              icon: "error",
               title: "Ups, tu contraseña o correo no coinciden",
               text: "Por favor, verifica tus datos e inténtalo de nuevo.",
+              customClass: {
+                title: 'swal-nunito-title',
+                container: 'swal-nunito swal-container',
+                confirmButton: 'swal-nunito swal-button',
+                actions: 'swal-nunito swal-actions',
+              },
             });
           } finally {
             setIsLoading(false); // Desactiva la animación de carga
