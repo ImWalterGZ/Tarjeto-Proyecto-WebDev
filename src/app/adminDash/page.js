@@ -14,7 +14,7 @@ export default function Dashboard() {
       <div className="flex justify-center text-neutral-600 font-bold text-3xl my-16">
         Zona de administrador
       </div>
-      <div id="CardContDisplay" className="flex justify-center items-center">
+      <div id="CardContDisplay" className="grid grid-cols-1 md:grid-cols-2 w-full justify-center items-start gap-12">
         <NegociosContainer reloadTrigger={reloadTrigger} />
         <MejoresUsers />
       </div>

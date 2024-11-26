@@ -35,10 +35,14 @@ export default function NegociosContainer( { reloadTrigger }) {
 
 
   return (
-    <div className="flex flex-col items-center justify-center bg-stone-100 w-8/12 mx-4 rounded-xl">
+    <div>
+    <div className="flex justify-center text-[#f4262f] font-bold text-3xl my-4">
+        <h2>Lugares registrados</h2>
+      </div>
+      <div className="flex flex-col w-full min-w-85 items-center justify-center bg-stone-100 rounded-xl p-5">
       <div
         id="cardContainer"
-        className="flex flex-wrap items-center w-full h-auto gap-4  justify-center "
+        className="flex flex-wrap items-start justify-between w-full h-auto gap-1"
       >
         {negocios.map((negocio) => (
           <NegociosCards 
@@ -50,5 +54,7 @@ export default function NegociosContainer( { reloadTrigger }) {
         ))}
       </div>
     </div>
+    </div>
+    
   );
 }
