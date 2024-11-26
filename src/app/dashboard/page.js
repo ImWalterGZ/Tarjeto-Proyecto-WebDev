@@ -5,7 +5,7 @@ import WelcomeUser from "./Components/WelcomeUser";
 import { useAuthUser } from "@/app/hooks/useAuthUser";
 
 export default function Dashboard() {
-  const { currentUser } = useAuthUser();
+  const { currentUser, tarjetas, reload } = useAuthUser();
   return (
     <div className="flex flex-col justify-center align-middle">
       <div className="flex h-12 justify-center items-center">
@@ -16,7 +16,7 @@ export default function Dashboard() {
       </div>
       <div id="CardContDisplay" className="flex justify-center items-center">
       {currentUser ? (
-          <CardContainer userId={currentUser} />
+          <CardContainer userId={currentUser.id} tarjetas={tarjetas} reload={reload}/>
         ) : (
           <p>Cargando...</p>
         )}

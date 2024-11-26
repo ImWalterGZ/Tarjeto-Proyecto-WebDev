@@ -1,9 +1,9 @@
 'use client'
 import { db } from "@/app/firebase"
-import { collection, query, where, getDocs, addDoc} from 'firebase/firestore';
+import { collection, query, where, getDocs, addDoc, updateDoc, increment, doc} from 'firebase/firestore';
 import { useState } from "react";
 
-export default function AnadirLugar({userId}) {
+export default function AnadirLugar({userId, reload}) {
   const [codigoUs, setCodigoUs] = useState("");
 
   const obtenerNegocio = async (codigo) => {
@@ -15,34 +15,40 @@ export default function AnadirLugar({userId}) {
         alert("No se encontro el negocio.")
         return null;
       }
+      const docRef = doc(db, 'negocios', snapshot.docs[0].id);
+      await updateDoc(docRef, { codigo: generar() });
+
       if(await contieneTarjeta(snapshot.docs[0].data().nombre)){
+        reload();
         return null;
       }
 
-      console.log({
-        nombre:snapshot.docs[0].data().nombre,
-        visitasMinimas: snapshot.docs[0].data().VisitasMinimas,
-        visitas: 0
-      })
-      agregarTarjeta(snapshot.docs[0].data().nombre, snapshot.docs[0].data().VisitasMinimas);
-  
+      await agregarTarjeta(snapshot.docs[0].data().nombre, snapshot.docs[0].data().VisitasMinimas);
+      reload();
     } catch (error) {
       console.error('Error al obtener negocio:', error);
       throw error;
     }
   };
 
+  function generar() {
+    const caracteres = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    let codigo = "";
+    for (let i = 0; i < 6; i++) {
+      codigo += caracteres.charAt(Math.floor(Math.random() * caracteres.length));
+    }
+    return codigo;
+  }
+
   const agregarTarjeta = async (nombre, visitasMinimas) => {
     try {
-      // Obtén la referencia de la subcolección
       const tarjetasRef = collection(db, 'users', userId, 'tarjetas');
       
-      // Agrega un nuevo documento a la subcolección
       await addDoc(tarjetasRef, {
         nombreNegocio: nombre,
         requisitoMinimo: visitasMinimas,
         nivel: 0,
-        visitas: 0
+        visitas: 1
       });
   
       console.log("Tarjeta agregada correctamente.");
@@ -53,16 +59,20 @@ export default function AnadirLugar({userId}) {
 
 
   const contieneTarjeta = async (nombre) =>{
+ 
     try {
+      console.log("contieneTarjeta");
       const negociosRef = collection(db, 'users',userId,'tarjetas');
       const q = query(negociosRef, where('nombreNegocio', '==', nombre));
       const snapshot = await getDocs(q);
       if (snapshot.empty) {
         return false;
       }
-      alert("Ya cuenta con esta tarjeta.")
+      const docSnap = snapshot.docs[0]; 
+      const docRef = doc(db, 'users', userId, 'tarjetas', docSnap.id);
+      await updateDoc(docRef, { visitas: increment(1) });
+      
       return true;
-  
     } catch (error) {
       console.error('Error al obtener negocio:', error);
       throw error;
