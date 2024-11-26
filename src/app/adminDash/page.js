@@ -5,7 +5,7 @@ import MejoresUsers from "./Components/MejoresUsers";
 import { useAuthUser } from "@/app/hooks/useAuthUser";
 
 export default function Dashboard() {
-  const { currentUser } = useAuthUser();
+  const { currentUser, reloadTrigger } = useAuthUser();
   return (
     <div className="flex flex-col justify-center align-middle">
       <div className="flex h-12 justify-center items-center">
@@ -15,7 +15,7 @@ export default function Dashboard() {
         Zona de administrador
       </div>
       <div id="CardContDisplay" className="flex justify-center items-center">
-        <NegociosContainer />
+        <NegociosContainer reloadTrigger={reloadTrigger} />
         <MejoresUsers />
       </div>
     </div>
